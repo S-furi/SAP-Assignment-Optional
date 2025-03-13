@@ -1,0 +1,3 @@
+[submodule "coala-presentation"]
+	path = coala-presentation
+	url = git@github.com:S-furi/coala-presentation.git

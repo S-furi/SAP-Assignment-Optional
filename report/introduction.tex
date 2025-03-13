@@ -1,0 +1,43 @@
+\section{Introduction}\label{introduction}
+
+\textbf{Language Agents} are an emerging class of AI systems that use \ac{LLM} to
+interact with the world, applying advancements of current AI to the existing
+field of agent design, offering benefits for both fields.
+On one hand \ac{LLM}s have limited knowledge and reasoning capabilities,
+mitigated by connecting an \ac{LLM}s to internal memory and environments. On the
+other hand, traditional agents often require handcrafted rules or ,
+making generalisation challenging.
+
+Modern techniques of integrating \ac{LLM}s into the feedback loop of a
+cognitive agent, use the \ac{LLM} to reason, plan and manage long-term memory
+to improve \textbf{decision-making}. However, individual works use
+custom terminology to describe these processes. This paper proposes a
+conceptual framework in order to organise such efforts. The definition of such
+framework is lead by two ideas coming from history of computing and AI:
+\begin{itemize}
+    \item \textbf{Production Systems} generate a set of outcomes by iteratively
+    applying rules, originated as string manipulation systems;
+    \item \textbf{Cognitive Agents}: in order for \emph{production systems} to
+    be able to define systems capable of complex, hierarchically structured
+    behaviours, they were \textbf{incorporated} into cognitive architectures,
+    making it possibile to specify a \emph{control flow} for \emph{selecting},
+    \emph{applying} and \emph{generating} new productions.
+\end{itemize}
+
+The paper then describes a possible driver in order to define control over \ac{LLM}
+making them actual language agents, stating that as production systems indicate
+possible ways for modifying strings and \ac{LLM}s define a distribution over changes
+or additions to text, then \emph{control} from cognitive architectures used with
+production systems might be equally applicable to transform \ac{LLM}s into
+\emph{Language Agents}.
+
+The authors then proposes \ac{CoALA}, a conceptual framework to characterise and
+design general purpose language agents. Agents in CoALA are orgagnised along
+three dimensions:
+~\cite{sumers2024cognitivearchitectureslanguageagents}
+
+\begin{itemize}
+    \item \textbf{Information Storage}: \emph{working memory}, \emph{long-term memories};
+    \item \textbf{Action Space}: \emph{internal} space, \emph{external space}
+    \item \textbf{Decision-making Procedure}: interactive loop with \emph{planning} and \emph{execution}.
+\end{itemize}

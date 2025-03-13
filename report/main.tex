@@ -1,0 +1,41 @@
+\documentclass[twocolumn]{article}
+\usepackage[a4paper,margin=1in]{geometry}  % Adjust as needed
+\usepackage{graphicx}
+% \begin{figure*}
+%     \centering
+%     \includegraphics[width=\textwidth]{example-image}
+%     \caption{A figure spanning both columns.}
+%     \label{fig:example}
+% \end{figure*}
+\usepackage{lipsum}  % For placeholder text
+\usepackage{microtype}  % Better text spacing
+\usepackage{acronym}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{cleveref}
+\usepackage[inline]{enumitem}
+
+\acrodef{RL}{\textit{Reinforcement Learning}}
+\acrodef{LLM}{Large Language Models}
+\acrodef{CoALA}{\textbf{Co}gnitive \textbf{A}rchitectures for \textbf{L}anguage \textbf{A}gents}
+
+\title{
+\LARGE{\textbf{Analysis of \\ ''Cognitive Architecture for Language Agents``}}
+\\[2ex] \textit{Software Architecture and Platforms} - A.Y. 2024/2025
+}
+\date{March 2025}
+\author{Stefano Furi - \texttt{stefano.furi@studio.unibo.it} - 0001125057}
+
+\begin{document}
+
+\maketitle
+
+\input{introduction}
+\input{llms_with_agents}
+\input{coala}
+\input{conclusion_questions}
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}
