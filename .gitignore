@@ -22,11 +22,6 @@
 *.dvi
 *.ps
 
-# Generated images (optional, if you create figures programmatically)
-*.eps
-*.svg
-*.png
-
 # Backup files
 *.bak
 *.backup
