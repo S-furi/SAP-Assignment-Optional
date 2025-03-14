@@ -11,4 +11,4 @@ jobs:
       - uses: DanySK/compile-and-publish-all-latex@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          working-directory: report/
+          working-directory: summary/
