@@ -14,6 +14,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{cleveref}
 \usepackage[inline]{enumitem}
+\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+\addbibresource{references.bib}
 
 \acrodef{RL}{\textit{Reinforcement Learning}}
 \acrodef{LLM}{Large Language Models}
@@ -35,7 +37,6 @@
 \input{chapters/coala}
 \input{chapters/conclusion_questions}
 
-\bibliographystyle{alpha}
-\bibliography{references}
+\printbibliography
 
 \end{document}
