@@ -1,1 +1,138 @@
 %!TEX root = ../main.tex
+\section{The CoALA Framework}
+\ac{CoALA} positions the \ac{LLM} as the core component of a larger cognitive
+architecture, where a language agent stores information in \textbf{memory}
+modules, and acts in an action space structured into external and internal
+parts, as shown in \Cref{fig:coala}.
+%
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{img/coala-architecture.png}
+    \caption{The \ac{CoALA} architecture, defining a set of interacting modules
+    and processes.}
+    \label{fig:coala}
+\end{figure}
+%
+External actions let the agent interact with external environment through
+\emph{grounding}, while internal actions consist of a set of interactions with
+internal memories, and can be decomposed into
+\begin{enumerate*}[label=(\emph{\roman{*}})]
+    \item \emph{retrieval} when reading from long term memory,
+    \item \emph{reasoning} with updates of the short term working memory with
+        the \ac{LLM} and
+    \item \emph{learning} by means of writing in long term memory.
+\end{enumerate*}
+
+\ac{CoALA} leverages key concepts inspired by decades of research in cognitive
+agents, yet the incorporation of an \ac{LLM} lead to the addition of
+\emph{reasoning actions}, which can \textbf{flexibly produce new knowledge} for
+various purposes.
+
+\subsection{Memory}
+Memory is necessary due to the \emph{stateless} nature of \ac{LLM}s, which has
+been already shown by language agents to improve drastically agent's and
+accuracy. Under the \ac{CoALA} framework agents organise information into
+multiple memory modules, which we'll describe in the following paragraphs.
+
+\paragraph{Working Memory} maintains active and readily available information
+for the \emph {current decision cycle}, including perceptual input, active
+reasoning and other information carried by the previous decision cycle. In
+short, the working memory synthesise \ac{LLM}s input from a subset of working
+memory, and its output is then parsed back into other variables which are
+stored back in working memory and used to execute the corresponding action.
+Finally, the working memory also interact with long-term memories and
+grounding.
+
+\paragraph{Episodic Memory} stores experiences from earlier decision cycles
+which can be encoded in various formats. This memory can then be accessed by
+the working memory during the \emph{planning stage} of a decision cycle to
+support \emph{reasoning}.
+
+\paragraph{Semantic Memory} stores an agent's \emph{knowledge} about the
+\emph{world} and \emph{itself}. In language agents this memory is not
+fixed/read-only but agents can write new knowledge obtained from \ac{LLM}
+reasoning as a form of learning (incrementally build up knowledge from
+experience).
+
+\paragraph{Procedural Memory} divided in two forms
+
+\begin{itemize}
+    \item \emph{implicit} knowledge stored in the \ac{LLM} weights;
+    \item \textbf{explicit} knowledge written in the agent's code, furthermore
+        divisible into \emph{procedures} which implement \emph{actions} (reasoning,
+        retrieval grounding and learning), and \emph{procedures} that implement \emph{decision-making} itself.
+\end{itemize}
+
+Unlike other memories, procedural memory \textbf{must be initialised} by the
+designer, and finally, even if possible, learning by writing new actions into
+this memory is \emph{riskier} as it can easily introduce bugs or allow an
+agents to subvert its designer's intentions.
+
+\subsubsection{Grounding Actions}
+Grounding procedures execute internal actions and \emph{process environmental
+feedback} into working memory as text.
+
+\paragraph{Physical Environment} it involves processing inputs into textual
+observations, and affect the physical environments via robotic planners that
+take \emph{language-based commands}. When it comes to perceptual inputs,
+\textbf{vision-language models} are typically used to convert images into
+text~\cite{alayrac2022flamingovisuallanguagemodel}, providing additional
+context for the \ac{LLM}.
+
+\paragraph{Dialogue with Humans or Other Agents} by means of classical
+linguistic interaction can let the agent to accept new instructions or learn
+from people, and for agents capable of generating language they can ask for
+clarification, collaborate with multiple agents for social simulations or
+collaborative task solving.
+
+\paragraph{Digital Environment} including interactions with games, APIs, as well as
+\emph{general code execution}, resulting in cheaper, faster and thus a more convenient
+testbed for language agents.
+
+\subsubsection{Retrieval Actions (Planning)}
+Retrieval can be seen as a general procedure for reading information from long
+term memories into working memory. We distinguish among various type of
+retrieval:
+\begin{itemize}
+    \item \emph{Rule Based retrieval} useful for explicit memory organisation
+        (e.g. designer's rules), providing deterministic result with limited
+        flexibility and struggling with complex queries/fuzzy matches.
+    \item \emph{Sparse Retrieval} relies on discrete representations, such as
+        keywords or reverse indices. It is great for fast retrieval of factual
+        information or structured knowledge, but struggles with \emph{semantic
+        matching}.
+    \item \emph{Dense Retrieval} is particularly useful for retrieving
+        semantically relevant concepts. It uses continuous vector
+        representations (\emph{embeddings}) and retrieves memories based on
+        semantic similarities (e.g. nearest neighbours in a $d$-dimensional
+        feature space), like
+        BERT~\cite{devlin2019bertpretrainingdeepbidirectional} which uses a
+        transformer-based embedding model.
+\end{itemize}
+
+\subsection{Reasoning Actions (Planning)}
+Reasoning consists of a set of actions that aim to the processing of the
+context of working memory to generate new information. With reasoning a
+summarisation and distillation of core information inside working memory is
+performed, gaining insights about most recent observations, most recent
+trajectory and, optionally, information retrieved from long term memories.
+
+Reasoning supports \emph{learning} by writing results in long term memory, and
+\emph{decision making} by using the results as additional context for
+subsequent \ac{LLM} calls.
+
+\subsection{Learning}\label{ssec:learning}
+Learning is essentially a writing process on long term memories, which includes
+various kind of procedures explored in the following sections. This various
+ways of learning allow language agents (e.g. with respect to \ac{RL} agents) to
+learn rapidly by storing task-relevant language (quicker than parameter updates
+for \ac{RL} agents).
+
+\subsubsection{Updating Episodic Memory with Experience}
+
+\subsubsection{Updating Semantic Memory with Knowledge}
+
+\subsubsection{Updating LLMs Parameters (Procedural Memory)}
+
+\subsubsection{Updating Agent's Code (Procedural Memory)}
+
