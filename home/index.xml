@@ -14,9 +14,14 @@
 &lt;li>&lt;a href="#memory">&lt;em>Memory&lt;/em>&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#grounding">&lt;em>Grounding&lt;/em>&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#decision-making">&lt;em>Decision Making&lt;/em>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#an-example-soar-architecture">An Example: SOAR Architecture&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#learning">Learning&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#">&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#an-example-soar-architecture">An Example: SOAR Architecture&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
