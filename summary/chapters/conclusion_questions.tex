@@ -1,1 +1,102 @@
 %!TEX root = ../main.tex
+\section{Insights}
+In the following section some actionable insights that have been considered as
+particularly relevant are proposed and described.
+
+\paragraph{Modular agents: thinking beyond monoliths.} Agents should be
+\emph{structured and modular}, meaning that a framework for language agents
+would consolidate technical investment and improve compatibility, both in
+academic research by means of standardised terms and open source implementation
+facilitating modular plug-and-play and re-use, and in industry application
+maintaining a single company-wide ''language agent library`` reducing technical
+dept facilitating testing and re-use, enabling end users to experience a context-specific
+instanciation of the same base agent.
+
+\paragraph{Agent design: thinking beyond simple reasoning.} \ac{CoALA} defines
+agents over three different concepts (internal memory, set of possible internal
+and external actions and a decision making procedure), thus when developing an
+application-specific agent it consists of specifying implementations for each
+of these components. More in particular:
+\begin{itemize}
+    \item \textbf{What memory modules are necessary}
+    \item \textbf{Define agent's internal action space}, primarily consisting
+        of defining read and write access to each of the agent's memory
+        modules.
+    \item\textbf{Define decision-making procedure} specifying how reasoning
+        and retrieval actions are taken in order to choose an external or learning
+        actions. This step requires a tradeoff between performance and
+        generalisation.
+\end{itemize}
+
+\paragraph{Structured reasoning: thinking beyond prompt engineering.} \ac{CoALA} suggests
+a more structured reasoning procedure to update working memory variables:
+\begin{itemize}
+    \item \textbf{Prompting frameworks} like
+        LangChain\footnote{https://www.langchain.com} can be used to define
+        higher-level sequences of reasoning steps, reducing the burden of
+        reasoning per \ac{LLM} call and the low-level prompt crafting efforts.
+    \item \textbf{Reasoning usecases in agents can inform and reshape LLM
+        training} in terms of the types and formats of training instances.
+        \ac{LLM}s trained or finetuned beyond NLP tasks and adapted towards
+        different capabilities will more likely be the backbone of future
+        agents.
+\end{itemize}
+
+\paragraph{Long-term memory: thinking beyond retrieval augmentation.}
+Memory-augmented agents can both read and write self-generated content
+autonomously, opening the way for efficient lifelong learning mechanisms such
+as combining existing human knowledge with new experience and skills in order
+to help agents bootstrap to learn efficiently, with, for example, auto
+generation of episodic memory gaining knowledge from experience and reason
+about it. More in general, the possibility of adaptive mechanisms interleaving
+memory search and \emph{forward simulation} will allow agents to make the most
+of their knowledge.
+
+\paragraph{Learning: thinking beyond in-context learning or finetuning} by means of:
+\begin{itemize}
+    \item \textbf{Meta-learning by modifying agent's code}, for example
+        learning better retrieval procedures or learning to reason about when
+        certain knowledge would be useful.
+    \item \textbf{New forms of learning (and unlearning)} could include
+        fine-tuning \emph{smaller models} for specific reasoning sub-tasks and
+        studying the interaction effects between multiple forms of learning.
+\end{itemize}
+
+\paragraph{Action space: thinking beyond external tools or actions.} A good
+portion of agent's design should face the decision of the size and complexity
+of the action space: larger and complex action space are very well performing
+in complex scenarios, but they must face a more complex and sophisticated
+decision-making problem, most of the time relying on more customised or
+hand-crafted decision proceudres. A tradeoff of the action space vs.
+decision-making complexities is a basic problem to be considered before
+development, and as a general rule, taking the minimal action space necessary
+to solve a given task might be preferred.
+A non-negligible problem to address is the \emph{safety} of the actions space
+for some actions that are inherently riskier. Today safety measures are
+typically task specific heuristics.
+
+\paragraph{Decision Making: thinking beyond action generation.} Current agents
+have just scratched the surface of a more deliberate, propose-evaluate-select
+decision making procedures.
+
+\begin{itemize}
+    \item \textbf{Mixing language based reasoning and code-based planning} may
+        offer the best of both worlds, where agents may write and execute
+        simulation code on the fly to evaluate the consequences of plans and
+        plan using \ac{LLM}s to translate from natural language to structured
+        world models.
+
+    \item \textbf{Metareasoning to improve efficiency} considering that
+        \ac{LLM}s calls are both slow and computationally intensive, and that
+        there must be considered a balance between cost (computational and not)
+        and the utility of the resulting improved plan, future work should
+        develop mechanism to estimate the utility of planning (as humans seems
+        to do).
+\end{itemize} 
+
+\paragraph{Calibration and Alignment.} More complex decision making is
+currently bottlenecked by issues such as \emph{over-confidence} and
+miscalibration, misalignment with human values or bias, hallucinations in
+self-evaluation and lack of \emph{human-in-the-loop} mechanisms to face
+uncertainties.
+
