@@ -19,7 +19,17 @@
 &lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>&lt;a href="#language-models">Language Models&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#language-models">Language Models&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#cognitive-architectures-limitations">Cognitive Architectures Limitations&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#language-models-core">Language Models: Core&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#towards-language-agents">Towards Language Agents&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#similarities-with-production-systems">Similarities with Production Systems&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="background">Background&lt;/h2>
