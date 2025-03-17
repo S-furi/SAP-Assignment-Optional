@@ -1,0 +1,27 @@
+baseURL = "https://s-furi.github.io/SAP-Assignment-Optional/"
+languageCode = "en-us"
+title = "Analysis of Cognitive Architectures for Language Agents"
+theme = "reveal-hugo"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[params]
+author = "Stefano Furi"
+
+[outputFormats.Reveal]
+baseName = "index"
+mediaType = "text/html"
+isHTML = true
+
+[markup.highlight]
+style = "tango"  # set a style for hugo highlighting
+
+[params.reveal_hugo]
+margin = 0.2
+custom_theme = "css/robot-lung.css"
+transition = "slide"
+transition_speed = "fast"
+highlight_theme = "zenburn"
+history = true
+slide_number = true
