@@ -3,8 +3,6 @@ title = "My First Presentation"
 outputs = ["Reveal"]
 +++
 
----
-
 Contents:
 - [Background](#background)
   - [Agents in Symbolic AI](#agents-in-symbolic-ai)
@@ -15,8 +13,8 @@ Contents:
     - [*Memory*](#memory)
     - [*Grounding*](#grounding)
     - [*Decision Making*](#decision-making)
-    - [Learning](#learning)
-- [](#)
+    - [*Learning*](#learning)
+- [Language Models](#language-models)
 
 ---
 
@@ -119,10 +117,11 @@ graph TD
 
 ---
 
-#### Learning
+#### *Learning*
 
 <img src="figures/The-Soar-cognitive-architecture.png" width="500" >
----
 {{% /section %}}
 
+---
 
+## Language Models
