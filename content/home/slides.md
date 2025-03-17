@@ -121,9 +121,3 @@ graph TD
 #### An Example: SOAR Architecture
 
 ---
-
-::: {.incremental}
-- Eat merda
-- Cagare merda
-:::
-
