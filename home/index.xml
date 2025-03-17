@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homes on Analysis of Cognitive Architectures for Language Agents</title><link>https://s-furi.github.io/SAP-Assignment-Optional/home/</link><description>Recent content in Homes on Analysis of Cognitive Architectures for Language Agents</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://s-furi.github.io/SAP-Assignment-Optional/home/index.xml" rel="self" type="application/rss+xml"/><item><title>My First Presentation</title><link>https://s-furi.github.io/SAP-Assignment-Optional/home/slides/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://s-furi.github.io/SAP-Assignment-Optional/home/slides/</guid><description>&lt;hr>
-&lt;p>Contents:&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homes on Analysis of Cognitive Architectures for Language Agents</title><link>https://s-furi.github.io/SAP-Assignment-Optional/home/</link><description>Recent content in Homes on Analysis of Cognitive Architectures for Language Agents</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://s-furi.github.io/SAP-Assignment-Optional/home/index.xml" rel="self" type="application/rss+xml"/><item><title>My First Presentation</title><link>https://s-furi.github.io/SAP-Assignment-Optional/home/slides/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://s-furi.github.io/SAP-Assignment-Optional/home/slides/</guid><description>&lt;p>Contents:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#background">Background&lt;/a>
 &lt;ul>
@@ -11,19 +10,16 @@
 &lt;li>&lt;a href="#cognitive-agents">Cognitive Agents&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#production-systems-and-human-cognition">Production Systems and Human Cognition&lt;/a>
 &lt;ul>
+&lt;li>&lt;a href="#an-example-soar-architecture">An Example: SOAR Architecture&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#memory">&lt;em>Memory&lt;/em>&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#grounding">&lt;em>Grounding&lt;/em>&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#decision-making">&lt;em>Decision Making&lt;/em>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#learning">Learning&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#learning">&lt;em>Learning&lt;/em>&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>&lt;a href="#">&lt;/a>
-&lt;ul>
-&lt;li>&lt;a href="#an-example-soar-architecture">An Example: SOAR Architecture&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;/li>
+&lt;li>&lt;a href="#language-models">Language Models&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="background">Background&lt;/h2>
