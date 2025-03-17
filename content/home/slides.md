@@ -15,6 +15,10 @@ Contents:
     - [*Decision Making*](#decision-making)
     - [*Learning*](#learning)
 - [Language Models](#language-models)
+  - [Cognitive Architectures Limitations](#cognitive-architectures-limitations)
+  - [Language Models: Core](#language-models-core)
+  - [Towards Language Agents](#towards-language-agents)
+    - [Similarities with Production Systems](#similarities-with-production-systems)
 
 ---
 
@@ -80,6 +84,8 @@ knowledge bases.
 #### An Example: SOAR Architecture
 <img src="figures/The-Soar-cognitive-architecture.png">
 
+Showcase usage of large production systems connected to external *sensors*, *actuators* and *knowledge bases*
+
 ------
 
 #### *Memory*
@@ -102,6 +108,9 @@ knowledge bases.
 
 #### *Decision Making*
 
+Decision loop that matches preconditions, checks them against working memory,
+and choose and produce actions through a *propose and evaluate phase*.
+
 ```mermaid
 graph TD 
   in(["Input"])
@@ -114,14 +123,58 @@ graph TD
   Application --> out
   out --> in
 ```
-
 ---
 
 #### *Learning*
 
 <img src="figures/The-Soar-cognitive-architecture.png" width="500" >
+
+Learning is supported in various forms:
+
+- facts are written in **semantic memory**
+- experiences written in **episodic memory**
+- Adding/Rewriting to **procedural memory** through *Reinforcement Learning*
+
 {{% /section %}}
 
 ---
 
 ## Language Models
+
+---
+
+### Cognitive Architectures Limitations
+
+Cognitive architectures have two main problems:
+- They are *limited to domains* that can be described with logical predicates
+- Require many *pre-specified* rules in order to function properly
+
+---
+
+### Language Models: Core
+A language model is a **probabilistic** input-output system where it learn a distribution
+
+$$ P(w_i|w_{<i}) $$
+
+Where each $w$ is an individual *token*.
+
+Thanks to **Transformer Based** *LLM*s trained on internet-scale text, it has been shown how
+these models are useful for many tasks beyond simple text generation.
+
+---
+
+### Towards Language Agents
+
+In scenarios where LLMs act in interactive environment, we can talk about "*language agents*", i.e. systems
+that use LLMs as a core computation unit to reason, plan and act.
+
+---
+
+#### Similarities with Production Systems
+
+Both LLMs and Production Systems can be reduced to a *string rewriting problem*. For LLMs we can formulate the problem as
+completing a piece of text as a production allowing multiple possible continuation:
+
+$$ X \rightarrow XY_i $$
+
+for some set of completion $Y_i$. LLM's output defines a **probability distribution** over **which productions to select** when presented with input $X$.
