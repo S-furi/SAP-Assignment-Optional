@@ -14,6 +14,8 @@ Contents:
     - [*Memory*](#memory)
     - [*Grounding*](#grounding)
     - [*Decision Making*](#decision-making)
+    - [Learning](#learning)
+- [](#)
     - [An Example: SOAR Architecture](#an-example-soar-architecture)
 
 ---
@@ -114,10 +116,16 @@ graph TD
   out --> in
 ```
 
+---
 
+#### Learning
+
+<img src="figures/The-Soar-cognitive-architecture.png" width="500" >
 ---
 {{% /section %}}
 
 #### An Example: SOAR Architecture
 
 ---
+
+
