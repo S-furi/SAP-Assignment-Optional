@@ -11,12 +11,12 @@ Contents:
     - [Agents as String Manipulation Systems](#agents-as-string-manipulation-systems)
   - [Cognitive Agents](#cognitive-agents)
   - [Production Systems and Human Cognition](#production-systems-and-human-cognition)
+    - [An Example: SOAR Architecture](#an-example-soar-architecture)
     - [*Memory*](#memory)
     - [*Grounding*](#grounding)
     - [*Decision Making*](#decision-making)
     - [Learning](#learning)
 - [](#)
-    - [An Example: SOAR Architecture](#an-example-soar-architecture)
 
 ---
 
@@ -79,6 +79,7 @@ knowledge bases.
 
 {{% section %}}
 
+#### An Example: SOAR Architecture
 <img src="figures/The-Soar-cognitive-architecture.png">
 
 ------
@@ -123,9 +124,5 @@ graph TD
 <img src="figures/The-Soar-cognitive-architecture.png" width="500" >
 ---
 {{% /section %}}
-
-#### An Example: SOAR Architecture
-
----
 
 
