@@ -129,10 +129,79 @@ learn rapidly by storing task-relevant language (quicker than parameter updates
 for \ac{RL} agents).
 
 \subsubsection{Updating Episodic Memory with Experience}
+Following \ac{RL} common practice, store episodic trajectories to update a
+\emph{parametric policy}. The experiences in this memory could be retrieved
+later as examples and bases for reasoning and decision-making.
 
 \subsubsection{Updating Semantic Memory with Knowledge}
+Make use of \ac{LLM}s to reason about \emph{raw experiences} and store
+resulting \emph{inference} in semantic memory (e.g. there's no dishwasher in
+the room).
 
 \subsubsection{Updating LLMs Parameters (Procedural Memory)}
+Recall that \ac{LLM} weights represent a \textbf{implicit procedural
+knowledge}. Weights can then be adjusted to an agent's domain by \emph{fine
+tuning} during its lifetime, and this can be accomplished by supervised
+learning, imitation learning, from environmental feedback or AI feedback,
+typically using a measure of \emph{consistency} to select generations to fine
+tune on~\cite{wang2023selfconsistencyimproveschainthought}. Fine tuning is a
+costly form of Learning, but as training is becoming more efficient and some
+optimised \ac{LLM}s techniques are being exploited, it may be possible to allow
+language agent to autonomously determine when and how to fine-tune their
+\ac{LLM}.
 
 \subsubsection{Updating Agent's Code (Procedural Memory)}
+\ac{CoALA} allows agents to update their source code; more in particular:
+\begin{itemize}
+    \item \textbf{Update reasoning} for example, infer prompt instructions
+        (template) from input-output
+        examples~\cite{zhou2023largelanguagemodelshumanlevel};
+    \item \textbf{Update grounding actions}: notably current methods are limited
+        to creating new code skills to interact with external environment.
+    \item \textbf{Update retrieval}, not yet studied because it is considered a
+        basic action designed with some fixed implementation; however \ac{LLM}s
+        can perform distillation or use other techniques to learn \emph{better
+        retrieval processes}.
+    \item \textbf{Update learning} or \textbf{decision making} is theoretically
+        possible, however risky for the agent's functionality and alignment.
+\end{itemize}
 
+\subsection{Decision Making}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{img/coala-decision-making.pdf}
+    \caption{The \ac{CoALA} decision making process, highlighting its building
+        blocks (left) with the way they interact and interleave during the actual
+        loop, by means of the decision tree (right).}
+    \label{fig:coala-decision-making}
+\end{figure}
+Decision making is the procedure that chooses which action to apply, structured
+into decision cycles which yield an external grounding action or internal
+learning action.
+In \Cref{fig:coala-decision-making} is shown the decision loop, integrated as well
+with a simple custom decision tree. We can then summarise briefly its components:
+\begin{itemize}
+    \item \textbf{Planning Stage} where reasoning and retrieval can be applied
+        to propose, evaluate and select actions. These sub-stages can iterate
+        to build \emph{mulit-step} simulations before taking an action,
+        improving at each cycle the candidate solution. Each cycle includes:
+        \begin{enumerate}
+            \item \emph{Proposal} where one or more action candidates are
+                generated (using reasoning and optionally retrieval)a to sample
+                one or more grounding actions from the \ac{LLM}.
+            \item \emph{Evaluation} if multiple actions are proposed, for each
+                one of them a value is assigned, either through heuristics,
+                \ac{LLM} (perplexity) scores, or \ac{LLM} reasoning (useful for
+                simulating grounding feedback from external
+                world~\cite{hao2023reasoninglanguagemodelplanning})
+            \item \emph{Selection} (through argmax, softmax or other like
+                majority vote rule) of an action to execute, or reject them.
+        \end{enumerate}
+    \item \textbf{Execution}: selected action is applied executing relevant
+        procedure from agent's source code. This can lead (depending on agent's
+        implementation) to an external grounding action or an internal learning
+        action.
+\end{itemize}
+%
+After execution, an observation can be made from the environment, providing
+feedback from the agent's action and the cycle loops again.
