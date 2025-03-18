@@ -1,5 +1,5 @@
 <!doctype html><html lang=en><head><meta name=generator content="Hugo 0.145.0"><meta charset=utf-8><title>Cognitive Architectures for Language Agents</title>
-<meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black-translucent"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=stylesheet href=/SAP-Assignment-Optional/reveal-js/dist/reset.css><link rel=stylesheet href=/SAP-Assignment-Optional/reveal-js/dist/reveal.css><link rel=stylesheet href=/SAP-Assignment-Optional/css/robot-lung.css id=theme><link rel=stylesheet href=/SAP-Assignment-Optional/highlight-js/zenburn.min.css></head><body><div class=reveal><div class=slides><section><h1 id=cognitive-architectures-for-language-agents>Cognitive Architectures for Language Agents</h1><p>Paper presentation and analysis</p></section><section><p>Contents:</p><ul><li><a href=#background>Background</a><ul><li><a href=#agents-in-symbolic-ai>Agents in Symbolic AI</a><ul><li><a href=#agents-as-string-manipulation-systems>Agents as String Manipulation Systems</a></li></ul></li><li><a href=#cognitive-agents>Cognitive Agents</a></li><li><a href=#production-systems-and-human-cognition>Production Systems and Human Cognition</a><ul><li><a href=#an-example-soar-architecture>An Example: SOAR Architecture</a></li><li><a href=#memory><em>Memory</em></a></li><li><a href=#grounding><em>Grounding</em></a></li><li><a href=#decision-making><em>Decision Making</em></a></li><li><a href=#learning><em>Learning</em></a></li></ul></li></ul></li><li><a href=#language-models>Language Models</a><ul><li><a href=#cognitive-architectures-limitations>Cognitive Architectures Limitations</a></li><li><a href=#language-models-core>Language Models: Core</a></li><li><a href=#towards-language-agents>Towards Language Agents</a><ul><li><a href=#similarities-with-production-systems>Similarities with Production Systems</a></li></ul></li></ul></li></ul></section><section><h2 id=background>Background</h2><p>With the term <strong>Language Agents</strong>, we refer to an emerging class of AI systems that use Large
+<meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black-translucent"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=stylesheet href=/SAP-Assignment-Optional/reveal-js/dist/reset.css><link rel=stylesheet href=/SAP-Assignment-Optional/reveal-js/dist/reveal.css><link rel=stylesheet href=/SAP-Assignment-Optional/css/robot-lung.css id=theme><link rel=stylesheet href=/SAP-Assignment-Optional/highlight-js/zenburn.min.css></head><body><div class=reveal><div class=slides><section><h1 id=cognitive-architectures-for-language-agents>Cognitive Architectures for Language Agents</h1><p>Paper presentation and analysis</p></section><section><p>Contents:</p><ul><li><a href=#background>Background</a><ul><li><a href=#agents-in-symbolic-ai>Agents in Symbolic AI</a><ul><li><a href=#agents-as-string-manipulation-systems>Agents as String Manipulation Systems</a></li></ul></li><li><a href=#cognitive-agents>Cognitive Agents</a></li><li><a href=#production-systems-and-human-cognition>Production Systems and Human Cognition</a><ul><li><a href=#an-example-soar-architecture>An Example: SOAR Architecture</a></li><li><a href=#memory><em>Memory</em></a></li><li><a href=#grounding><em>Grounding</em></a></li><li><a href=#decision-making><em>Decision Making</em></a></li><li><a href=#learning><em>Learning</em></a></li></ul></li></ul></li><li><a href=#language-models>Language Models</a><ul><li><a href=#cognitive-architectures-limitations>Cognitive Architectures Limitations</a></li><li><a href=#language-models-core>Language Models: Core</a></li><li><a href=#towards-language-agents>Towards Language Agents</a><ul><li><a href=#similarities-with-production-systems>Similarities with Production Systems</a></li><li><a href=#from-prompt-engineering-to-cognitive-language-agents>From Prompt Engineering to Cognitive Language Agents</a></li></ul></li></ul></li><li><a href=#cognitive-architecture-for-language-agents-coala>Cognitive Architecture for Language Agents (<code>CoALA</code>)</a><ul><li><a href=#usage-of-cognitive-architectures-on-llm-agents>Usage of Cognitive Architectures on LLM agents</a></li><li><a href=#coala><code>CoALA</code></a></li><li><a href=#architecture>Architecture</a><ul><li><a href=#memory-1>Memory</a><ul><li><a href=#working-memory>Working Memory</a></li><li><a href=#episodic-memory>Episodic Memory</a></li><li><a href=#semantic-memory>Semantic Memory</a></li><li><a href=#procedural-memory>Procedural Memory</a></li></ul></li><li><a href=#grounding-actions>Grounding Actions</a><ul><li><a href=#physical-environment>Physical Environment</a></li><li><a href=#dialogue-with-humans-or-other-agents>Dialogue with Humans or Other Agents</a></li><li><a href=#digital-environment>Digital Environment</a></li></ul></li><li><a href=#retrieval-actions>Retrieval Actions</a></li><li><a href=#reasoning-actions>Reasoning Actions</a></li><li><a href=#learning-1>Learning</a><ul><li><a href=#updating-episodic-memory>Updating Episodic Memory</a></li><li><a href=#updating-semantic-memory>Updating Semantic Memory</a></li><li><a href=#updating-llm-parameters-procedural-memory>Updating LLM Parameters (Procedural Memory)</a></li><li><a href=#updating-agents-code-procedural-memory>Updating Agent&rsquo;s Code (Procedural Memory)</a></li></ul></li><li><a href=#decision-making-1>Decision Making</a><ul><li><a href=#proposal>Proposal</a></li><li><a href=#evaluation>Evaluation</a></li><li><a href=#selection>Selection</a></li><li><a href=#execution>Execution</a></li></ul></li></ul></li></ul></li><li><a href=#insights>Insights</a></li></ul></section><section><h2 id=background>Background</h2><p>With the term <strong>Language Agents</strong>, we refer to an emerging class of AI systems that use Large
 Language Models (LLM) to interact with the world, applying together current advancement in AI to the
 existing field of agent design, offering benefits for both fields.</p></section><section><section data-shortcode-section><h3 id=agents-in-symbolic-ai>Agents in Symbolic AI</h3><p>The rise of Agents in symbolic AI comes from the concept of <strong>Production Systems</strong>:</p><blockquote><p>Production Systems generate a set of outcomes by iteratively applying rules</p></blockquote><p>A production system basically consists of:</p><ul><li>A set of <em>rules</em>, each one specifying:<ul><li>a <em>precondition</em></li><li>an <em>action</em></li></ul></li></ul></section><section><h4 id=agents-as-string-manipulation-systems>Agents as String Manipulation Systems</h4><p>E. L. Post proposed thinking about arbitrary logical systems in terms of
 production systems.</p><p>Later on, it will be shown to be equivalent to a simpler <em>string rewriting</em>
@@ -20,4 +20,130 @@ Application --> out
 out --> in</div></section><section><h4 id=learning><em>Learning</em></h4><img src=figures/The-Soar-cognitive-architecture.png width=500><p>Learning is supported in various forms:</p><ul><li>facts are written in <strong>semantic memory</strong></li><li>experiences written in <strong>episodic memory</strong></li><li>Adding/Rewriting to <strong>procedural memory</strong> through <em>Reinforcement Learning</em></li></ul></section></section><section><h2 id=language-models>Language Models</h2></section><section><h3 id=cognitive-architectures-limitations>Cognitive Architectures Limitations</h3><p>Cognitive architectures have two main problems:</p><ul><li>They are <em>limited to domains</em> that can be described with logical predicates</li><li>Require many <em>pre-specified</em> rules in order to function properly</li></ul></section><section><h3 id=language-models-core>Language Models: Core</h3><p>A language model is a <strong>probabilistic</strong> input-output system where it learn a distribution</p><p>$$ P(w_i|w_{&lt;i}) $$</p><p>Where each $w$ is an individual <em>token</em>.</p><p>Thanks to <strong>Transformer Based</strong> <em>LLM</em>s trained on internet-scale text, it has been shown how
 these models are useful for many tasks beyond simple text generation.</p></section><section><h3 id=towards-language-agents>Towards Language Agents</h3><p>In scenarios where LLMs act in interactive environment, we can talk about &ldquo;<em>language agents</em>&rdquo;, i.e. systems
 that use LLMs as a core computation unit to reason, plan and act.</p></section><section><h4 id=similarities-with-production-systems>Similarities with Production Systems</h4><p>Both LLMs and Production Systems can be reduced to a <em>string rewriting problem</em>. For LLMs we can formulate the problem as
-completing a piece of text as a production allowing multiple possible continuation:</p><p>$$ X \rightarrow XY_i $$</p><p>for some set of completion $Y_i$. LLM&rsquo;s output defines a <strong>probability distribution</strong> over <strong>which productions to select</strong> when presented with input $X$.</p></section></div></div><script type=text/javascript src=/SAP-Assignment-Optional/reveal-hugo/object-assign.js></script><script src=/SAP-Assignment-Optional/reveal-js/dist/reveal.js></script><script type=text/javascript src=/SAP-Assignment-Optional/reveal-js/plugin/markdown/markdown.js></script><script type=text/javascript src=/SAP-Assignment-Optional/reveal-js/plugin/highlight/highlight.js></script><script type=text/javascript src=/SAP-Assignment-Optional/reveal-js/plugin/zoom/zoom.js></script><script type=text/javascript src=/SAP-Assignment-Optional/reveal-js/plugin/notes/notes.js></script><script type=text/javascript>function camelize(e){return e&&Object.keys(e).forEach(function(t){newK=t.replace(/(_\w)/g,function(e){return e[1].toUpperCase()}),newK!=t&&(e[newK]=e[t],delete e[t])}),e}var revealHugoDefaults={center:!0,controls:!0,history:!0,progress:!0,transition:"slide"},revealHugoSiteParams={custom_theme:"css/robot-lung.css",highlight_theme:"zenburn",history:!0,margin:.2,slide_number:!0,transition:"slide",transition_speed:"fast"},revealHugoPageParams={},revealHugoPlugins={plugins:[RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]},options=Object.assign({},camelize(revealHugoDefaults),camelize(revealHugoSiteParams),camelize(revealHugoPageParams),camelize(revealHugoPlugins));Reveal.initialize(options)</script><script type=text/javascript src=/SAP-Assignment-Optional/mermaid.min_16862243754454536095.js></script><script type=text/javascript>mermaid.initialize({startOnLoad:!1});let render=e=>{let t=e.currentSlide.querySelectorAll(".mermaid");if(!t.length)return;t.forEach(e=>{let t=e.getAttribute("data-processed");t||mermaid.init(void 0,e)})};render({currentSlide:Reveal.getCurrentSlide()}),Reveal.on("slidechanged",render),Reveal.on("ready",render)</script><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},svg:{fontCache:"global"}}</script><script type=text/javascript id=MathJax-script async src=/SAP-Assignment-Optional/tex-svg_7522271970123696654.js></script></body></html>
+completing a piece of text as a production allowing multiple possible continuation:</p><p>$$ X \rightarrow XY_i $$</p><p>for some set of completion $Y_i$. LLM&rsquo;s output defines a <strong>probability
+distribution</strong> over <strong>which productions to select</strong> when presented with input
+$X$.</p></section><section><h4 id=from-prompt-engineering-to-cognitive-language-agents>From Prompt Engineering to Cognitive Language Agents</h4><p>Early works focused on prompt engineering techniques such as <strong>few shot
+learning</strong> or <strong>self reasoning</strong> in order to bias the LLM towards high-quality
+productions.</p><p>Subsequently, LLM has been placed directly inside the <strong>feedback loop</strong>,
+interacting with an external environment and later incorporated with sophisticated
+intermediate reasoning by means of interacting with long term memories.</p></section><section><h2 id=cognitive-architecture-for-language-agents-coala>Cognitive Architecture for Language Agents (<code>CoALA</code>)</h2></section><section><h3 id=usage-of-cognitive-architectures-on-llm-agents>Usage of Cognitive Architectures on LLM agents</h3><p>Cognitive architectures has been used used to <strong>structure production systems'
+interactions with agents&rsquo; internal state and external environment</strong>, and they
+can be rather useful for the same purposes in design LLM-based cognitive agents.</p></section><section><h3 id=coala><code>CoALA</code></h3><p><code>CoALA</code> positions the LLM as the core component of a larger cognitive architecture, where a language agent stores information in <strong>memory</strong> modules, and acts
+in an <strong>action space</strong> structured into <em>internal</em> and <em>external</em> parts.</p></section><section><h3 id=architecture>Architecture</h3><p><img src=figures/coala-architecture.png alt="The CoALA framework architecture"></p></section><section><section data-shortcode-section><h4 id=memory>Memory</h4></section><section><h5 id=working-memory>Working Memory</h5><p>Maintains available information for the <em>current decision cycle</em></p><ul><li>Perceptual Input</li><li>Active reasoning variables</li><li>Previous decision cycle variables</li><li>Information retrieved from long-term memories</li></ul></section><section><h5 id=episodic-memory>Episodic Memory</h5><p>Stores <strong>experiences</strong> from earlier decision cycles. Can be accessed by the
+working memory during the planning stage of a decision cycle to support
+<em>reasoning</em>.</p></section><section><h5 id=semantic-memory>Semantic Memory</h5><p>Stores agent&rsquo;s <strong>knowledge</strong> about the <strong>world</strong> and <strong>itself</strong>.</p></section><section><h5 id=procedural-memory>Procedural Memory</h5><p>Divided in two forms:</p><ul><li><em>Implicit</em> knowledge stored in the LLM weights</li><li><strong>Explicit</strong> knowledge written in the agent&rsquo;s code</li></ul></section></section><section><section data-shortcode-section><h4 id=grounding-actions>Grounding Actions</h4><p>Execute internal actions and process environmental feedback into working memory as text</p></section><section><h5 id=physical-environment>Physical Environment</h5><p>Involves processing inputs into textual observations and affect physical environment via robotic planners
+that take <strong>language-based commands</strong></p></section><section><h5 id=dialogue-with-humans-or-other-agents>Dialogue with Humans or Other Agents</h5><p>By means of classical linguistic interaction can let the agent to accept new
+instructions, and (if capable of generating text) ask for clarification or
+collaborate with other agents/humans.</p></section><section><h5 id=digital-environment>Digital Environment</h5><p>Include interactions with games, APIs, as well as <em>general code execution</em>.</p></section></section><section><h4 id=retrieval-actions>Retrieval Actions</h4><p>Can be seen as the general procedure for <strong>reading information from long term memories</strong> into working memory (e.g. <em>Rule Based</em> retrieval, <em>Sparse</em> retrieval, <em>Dense</em> retrieval, etc.)</p></section><section><h4 id=reasoning-actions>Reasoning Actions</h4><p>Reasoning consists of a set of actions that aim to the <strong>processing</strong> of the <strong>content
+of working memory</strong> to generate new information</p></section><section><section data-shortcode-section><h4 id=learning>Learning</h4><p>Essentially a <strong>writing process on long term memories</strong> that can be accomplished in
+various ways.</p></section><section><h5 id=updating-episodic-memory>Updating Episodic Memory</h5><p>Episodic Memory is updated with experiences, following RL common practice of storing
+trajectories ato update a <strong>parametric policy</strong>.</p></section><section><h5 id=updating-semantic-memory>Updating Semantic Memory</h5><p>LLM reason about <strong>raw experiences</strong> and store resulting <em>inference</em> in semantic memory.</p></section><section><h5 id=updating-llm-parameters-procedural-memory>Updating LLM Parameters (Procedural Memory)</h5><p>LLM parameters can be adapted to certain domains through <strong>finetuning</strong> during
+its lifetime (e.g. supervised learning, imitation learning, environmental or AI
+feedback).</p></section><section><h5 id=updating-agents-code-procedural-memory>Updating Agent&rsquo;s Code (Procedural Memory)</h5><p><code>CoALA</code> allows agents to update their source code in various ways:</p><ul><li>Update reasoning</li><li>Update grounding actions</li><li>Update retrieval</li><li>Update learning or decision making</li></ul></section></section><section><section data-shortcode-section><h4 id=decision-making>Decision Making</h4><p>Main procedure that chooses which <strong>action</strong> to apply, structured into
+<strong>decision cycles</strong> yielding an external grounding action or an internal
+learning action.</p><div class=mermaid>graph TB
+classDef selected fill:#f96
+classDef not fill:#eee,stroke:#000
+obs@{ shape: stadium, label: "Observation"}
+subgraph pl["Planning"]
+direction TB
+prop["Propose"]
+eval["Evaluate"]
+select["Selection"]
+prop --> eval
+eval --> select
+select --> prop
+end
+exec["Execution"]
+obs --> pl
+pl --> exec
+style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+obs:::not
+prop:::not
+eval:::not
+select:::not
+exec:::not</div></section><section><h5 id=proposal>Proposal</h5><p>One or more action candidates are generated to sample one or more actions from the LLM</p><div class=mermaid>graph TB
+classDef selected fill:#ffb882,stroke:#000
+classDef not fill:#eee,stroke:#000
+obs@{ shape: stadium, label: "Observation"}
+subgraph pl["Planning"]
+direction TB
+prop["Propose"]
+eval["Evaluate"]
+select["Selection"]
+prop --> eval
+eval --> select
+select --> prop
+end
+exec["Execution"]
+obs --> pl
+pl --> exec
+style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+obs:::not
+prop:::selected
+eval:::not
+select:::not
+exec:::not</div></section><section><h5 id=evaluation>Evaluation</h5><p>If multiple actions are proposed, a ranking and ordering is performed among them</p><div class=mermaid>graph TB
+classDef selected fill:#ffb882,stroke:#000
+classDef not fill:#eee,stroke:#000
+obs@{ shape: stadium, label: "Observation"}
+subgraph pl["Planning"]
+direction TB
+prop["Propose"]
+eval["Evaluate"]
+select["Selection"]
+prop --> eval
+eval --> select
+select --> prop
+end
+exec["Execution"]
+obs --> pl
+pl --> exec
+style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+obs:::not
+prop:::not
+eval:::selected
+select:::not
+exec:::not</div></section><section><h5 id=selection>Selection</h5><p>Through argmax, softmax or MVR, an action is selected or rejects all the prosed ones</p><div class=mermaid>graph TB
+classDef selected fill:#ffb882,stroke:#000
+classDef not fill:#eee,stroke:#000
+obs@{ shape: stadium, label: "Observation"}
+subgraph pl["Planning"]
+direction TB
+prop["Propose"]
+eval["Evaluate"]
+select["Selection"]
+prop --> eval
+eval --> select
+select --> prop
+end
+exec["Execution"]
+obs --> pl
+pl --> exec
+style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+obs:::not
+prop:::not
+eval:::not
+select:::selected
+exec:::not</div></section><section><h5 id=execution>Execution</h5><p>Selected action is applied executing relevant procedure from agent’s source code, leading to an external grounding action or an internal learning action.</p><div class=mermaid>graph TB
+classDef selected fill:#ffb882,stroke:#000
+classDef not fill:#eee,stroke:#000
+obs@{ shape: stadium, label: "Observation"}
+subgraph pl["Planning"]
+direction TB
+prop["Propose"]
+eval["Evaluate"]
+select["Selection"]
+prop --> eval
+eval --> select
+select --> prop
+end
+exec["Execution"]
+obs --> pl
+pl --> exec
+style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+obs:::not
+prop:::not
+eval:::not
+select:::not
+exec:::selected</div></section></section><section><h2 id=insights>Insights</h2></section></div></div><script type=text/javascript src=/SAP-Assignment-Optional/reveal-hugo/object-assign.js></script><script src=/SAP-Assignment-Optional/reveal-js/dist/reveal.js></script><script type=text/javascript src=/SAP-Assignment-Optional/reveal-js/plugin/markdown/markdown.js></script><script type=text/javascript src=/SAP-Assignment-Optional/reveal-js/plugin/highlight/highlight.js></script><script type=text/javascript src=/SAP-Assignment-Optional/reveal-js/plugin/zoom/zoom.js></script><script type=text/javascript src=/SAP-Assignment-Optional/reveal-js/plugin/notes/notes.js></script><script type=text/javascript>function camelize(e){return e&&Object.keys(e).forEach(function(t){newK=t.replace(/(_\w)/g,function(e){return e[1].toUpperCase()}),newK!=t&&(e[newK]=e[t],delete e[t])}),e}var revealHugoDefaults={center:!0,controls:!0,history:!0,progress:!0,transition:"slide"},revealHugoSiteParams={custom_theme:"css/robot-lung.css",highlight_theme:"zenburn",history:!0,margin:.2,slide_number:!0,transition:"slide",transition_speed:"fast"},revealHugoPageParams={},revealHugoPlugins={plugins:[RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]},options=Object.assign({},camelize(revealHugoDefaults),camelize(revealHugoSiteParams),camelize(revealHugoPageParams),camelize(revealHugoPlugins));Reveal.initialize(options)</script><script type=text/javascript src=/SAP-Assignment-Optional/mermaid.min_16862243754454536095.js></script><script type=text/javascript>mermaid.initialize({startOnLoad:!1});let render=e=>{let t=e.currentSlide.querySelectorAll(".mermaid");if(!t.length)return;t.forEach(e=>{let t=e.getAttribute("data-processed");t||mermaid.init(void 0,e)})};render({currentSlide:Reveal.getCurrentSlide()}),Reveal.on("slidechanged",render),Reveal.on("ready",render)</script><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},svg:{fontCache:"global"}}</script><script type=text/javascript id=MathJax-script async src=/SAP-Assignment-Optional/tex-svg_7522271970123696654.js></script></body></html>

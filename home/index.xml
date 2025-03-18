@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homes on Analysis of Cognitive Architectures for Language Agents</title><link>https://s-furi.github.io/SAP-Assignment-Optional/home/</link><description>Recent content in Homes on Analysis of Cognitive Architectures for Language Agents</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://s-furi.github.io/SAP-Assignment-Optional/home/index.xml" rel="self" type="application/rss+xml"/><item><title>My First Presentation</title><link>https://s-furi.github.io/SAP-Assignment-Optional/home/slides/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://s-furi.github.io/SAP-Assignment-Optional/home/slides/</guid><description>&lt;p>Contents:&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homes on Analysis of Cognitive Architectures for Language Agents</title><link>https://s-furi.github.io/SAP-Assignment-Optional/home/</link><description>Recent content in Homes on Analysis of Cognitive Architectures for Language Agents</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://s-furi.github.io/SAP-Assignment-Optional/home/index.xml" rel="self" type="application/rss+xml"/><item><title>Cognitive Architectures for Language Agents</title><link>https://s-furi.github.io/SAP-Assignment-Optional/home/slides/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://s-furi.github.io/SAP-Assignment-Optional/home/slides/</guid><description>&lt;p>Contents:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#background">Background&lt;/a>
 &lt;ul>
@@ -26,10 +26,55 @@
 &lt;li>&lt;a href="#towards-language-agents">Towards Language Agents&lt;/a>
 &lt;ul>
 &lt;li>&lt;a href="#similarities-with-production-systems">Similarities with Production Systems&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#from-prompt-engineering-to-cognitive-language-agents">From Prompt Engineering to Cognitive Language Agents&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
 &lt;/li>
+&lt;li>&lt;a href="#cognitive-architecture-for-language-agents-coala">Cognitive Architecture for Language Agents (&lt;code>CoALA&lt;/code>)&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#usage-of-cognitive-architectures-on-llm-agents">Usage of Cognitive Architectures on LLM agents&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#coala">&lt;code>CoALA&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#architecture">Architecture&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#memory-1">Memory&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#working-memory">Working Memory&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#episodic-memory">Episodic Memory&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#semantic-memory">Semantic Memory&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#procedural-memory">Procedural Memory&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#grounding-actions">Grounding Actions&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#physical-environment">Physical Environment&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#dialogue-with-humans-or-other-agents">Dialogue with Humans or Other Agents&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#digital-environment">Digital Environment&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#retrieval-actions">Retrieval Actions&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#reasoning-actions">Reasoning Actions&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#learning-1">Learning&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#updating-episodic-memory">Updating Episodic Memory&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#updating-semantic-memory">Updating Semantic Memory&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#updating-llm-parameters-procedural-memory">Updating LLM Parameters (Procedural Memory)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#updating-agents-code-procedural-memory">Updating Agent&amp;rsquo;s Code (Procedural Memory)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#decision-making-1">Decision Making&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#proposal">Proposal&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#evaluation">Evaluation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#selection">Selection&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#execution">Execution&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#insights">Insights&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="background">Background&lt;/h2>
