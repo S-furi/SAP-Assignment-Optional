@@ -1,5 +1,5 @@
 +++
-title = "My First Presentation"
+title = "Cognitive Architectures for Language Agents"
 outputs = ["Reveal"]
 +++
 
@@ -19,6 +19,17 @@ Contents:
   - [Language Models: Core](#language-models-core)
   - [Towards Language Agents](#towards-language-agents)
     - [Similarities with Production Systems](#similarities-with-production-systems)
+    - [From Prompt Engineering to Cognitive Language Agents](#from-prompt-engineering-to-cognitive-language-agents)
+- [Cognitive Architecture for Language Agents (`CoALA`)](#cognitive-architecture-for-language-agents-coala)
+  - [Usage of Cognitive Architectures on LLM agents](#usage-of-cognitive-architectures-on-llm-agents)
+  - [`CoALA`](#coala)
+  - [Architecture](#architecture)
+    - [Memory](#memory-1)
+      - [Working Memory](#working-memory)
+      - [Episodic Memory](#episodic-memory)
+      - [Semantic Memory](#semantic-memory)
+      - [Procedural Memory](#procedural-memory)
+    - [Grounding Actions](#grounding-actions)
 
 ---
 
@@ -177,4 +188,69 @@ completing a piece of text as a production allowing multiple possible continuati
 
 $$ X \rightarrow XY_i $$
 
-for some set of completion $Y_i$. LLM's output defines a **probability distribution** over **which productions to select** when presented with input $X$.
+for some set of completion $Y_i$. LLM's output defines a **probability
+distribution** over **which productions to select** when presented with input
+$X$.
+
+---
+
+#### From Prompt Engineering to Cognitive Language Agents
+
+Early works focused on prompt engineering techniques such as **few shot
+learning** or **self reasoning** in order to bias the LLM towards high-quality
+productions.
+
+Subsequently, LLM has been placed directly inside the **feedback loop**,
+interacting with an external environment and later incorporated with sophisticated
+intermediate reasoning by means of interacting with long term memories.
+
+---
+
+## Cognitive Architecture for Language Agents (`CoALA`)
+
+---
+
+### Usage of Cognitive Architectures on LLM agents
+Cognitive architectures has been used used to **structure production systems'
+interactions with agents' internal state and external environment**, and they
+can be rather useful for the same purposes in design LLM-based cognitive agents.
+
+---
+
+### `CoALA`
+
+`CoALA` positions the LLM as the core component of a larger cognitive architecture, where a language agent stores information in **memory** modules, and acts
+in an **action space** structured into *internal* and *external* parts.
+
+---
+
+### Architecture
+![The CoALA framework architecture](figures/coala-architecture.png)
+
+---
+
+{{% section %}}
+#### Memory
+
+---
+
+##### Working Memory
+
+---
+
+##### Episodic Memory
+
+
+---
+
+##### Semantic Memory
+
+---
+
+##### Procedural Memory
+
+{{% /section %}}
+
+---
+
+#### Grounding Actions
