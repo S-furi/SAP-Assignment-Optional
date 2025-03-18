@@ -30,6 +30,22 @@ Contents:
       - [Semantic Memory](#semantic-memory)
       - [Procedural Memory](#procedural-memory)
     - [Grounding Actions](#grounding-actions)
+      - [Physical Environment](#physical-environment)
+      - [Dialogue with Humans or Other Agents](#dialogue-with-humans-or-other-agents)
+      - [Digital Environment](#digital-environment)
+    - [Retrieval Actions](#retrieval-actions)
+    - [Reasoning Actions](#reasoning-actions)
+    - [Learning](#learning-1)
+      - [Updating Episodic Memory](#updating-episodic-memory)
+      - [Updating Semantic Memory](#updating-semantic-memory)
+      - [Updating LLM Parameters (Procedural Memory)](#updating-llm-parameters-procedural-memory)
+      - [Updating Agent's Code (Procedural Memory)](#updating-agents-code-procedural-memory)
+    - [Decision Making](#decision-making-1)
+      - [Proposal](#proposal)
+      - [Evaluation](#evaluation)
+      - [Selection](#selection)
+      - [Execution](#execution)
+- [Insights](#insights)
 
 ---
 
@@ -236,21 +252,308 @@ in an **action space** structured into *internal* and *external* parts.
 
 ##### Working Memory
 
+Maintains available information for the *current decision cycle*
+- Perceptual Input
+- Active reasoning variables
+- Previous decision cycle variables
+- Information retrieved from long-term memories
+
 ---
 
 ##### Episodic Memory
 
+Stores **experiences** from earlier decision cycles. Can be accessed by the
+working memory during the planning stage of a decision cycle to support
+*reasoning*.
 
 ---
 
 ##### Semantic Memory
 
+Stores agent's **knowledge** about the **world** and **itself**.
+
 ---
 
 ##### Procedural Memory
+
+Divided in two forms:
+- *Implicit* knowledge stored in the LLM weights
+- **Explicit** knowledge written in the agent's code
 
 {{% /section %}}
 
 ---
 
+{{% section %}}
 #### Grounding Actions
+Execute internal actions and process environmental feedback into working memory as text
+
+---
+
+##### Physical Environment
+
+Involves processing inputs into textual observations and affect physical environment via robotic planners
+that take **language-based commands**
+
+---
+
+##### Dialogue with Humans or Other Agents
+
+By means of classical linguistic interaction can let the agent to accept new
+instructions, and (if capable of generating text) ask for clarification or
+collaborate with other agents/humans.
+
+---
+
+##### Digital Environment
+
+Include interactions with games, APIs, as well as *general code execution*.
+
+{{% /section %}}
+
+---
+
+#### Retrieval Actions
+
+Can be seen as the general procedure for **reading information from long term memories** into working memory (e.g. *Rule Based* retrieval, *Sparse* retrieval, *Dense* retrieval, etc.)
+
+---
+
+#### Reasoning Actions
+Reasoning consists of a set of actions that aim to the **processing** of the **content
+of working memory** to generate new information
+
+---
+
+{{% section %}}
+
+#### Learning
+Essentially a **writing process on long term memories** that can be accomplished in
+various ways.
+
+---
+
+##### Updating Episodic Memory
+
+Episodic Memory is updated with experiences, following RL common practice of storing
+trajectories ato update a **parametric policy**.
+
+--- 
+
+##### Updating Semantic Memory
+
+LLM reason about **raw experiences** and store resulting *inference* in semantic memory.
+
+--- 
+
+##### Updating LLM Parameters (Procedural Memory)
+
+LLM parameters can be adapted to certain domains through **finetuning** during
+its lifetime (e.g. supervised learning, imitation learning, environmental or AI
+feedback).
+
+--- 
+
+##### Updating Agent's Code (Procedural Memory)
+
+`CoALA` allows agents to update their source code in various ways:
+- Update reasoning
+- Update grounding actions
+- Update retrieval
+- Update learning or decision making
+
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+#### Decision Making
+
+Main procedure that chooses which **action** to apply, structured into
+**decision cycles** yielding an external grounding action or an internal
+learning action.
+
+```mermaid
+graph TB
+  classDef selected fill:#f96
+  classDef not fill:#eee,stroke:#000
+
+  obs@{ shape: stadium, label: "Observation"}
+
+  subgraph pl["Planning"]
+    direction TB
+    prop["Propose"]
+    eval["Evaluate"]
+    select["Selection"]
+
+    prop --> eval
+    eval --> select
+    select --> prop
+  end
+
+  exec["Execution"]
+
+  obs --> pl
+  pl --> exec
+
+  style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+  obs:::not
+  prop:::not
+  eval:::not
+  select:::not
+  exec:::not
+```
+
+---
+
+##### Proposal
+
+One or more action candidates are generated to sample one or more actions from the LLM
+
+```mermaid
+graph TB
+  classDef selected fill:#ffb882,stroke:#000
+  classDef not fill:#eee,stroke:#000
+
+  obs@{ shape: stadium, label: "Observation"}
+
+  subgraph pl["Planning"]
+    direction TB
+    prop["Propose"]
+    eval["Evaluate"]
+    select["Selection"]
+
+    prop --> eval
+    eval --> select
+    select --> prop
+  end
+
+  exec["Execution"]
+
+  obs --> pl
+  pl --> exec
+
+  style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+  obs:::not
+  prop:::selected
+  eval:::not
+  select:::not
+  exec:::not
+```
+
+---
+
+##### Evaluation
+
+If multiple actions are proposed, a ranking and ordering is performed among them
+
+```mermaid
+graph TB
+  classDef selected fill:#ffb882,stroke:#000
+  classDef not fill:#eee,stroke:#000
+
+  obs@{ shape: stadium, label: "Observation"}
+
+  subgraph pl["Planning"]
+    direction TB
+    prop["Propose"]
+    eval["Evaluate"]
+    select["Selection"]
+
+    prop --> eval
+    eval --> select
+    select --> prop
+  end
+
+  exec["Execution"]
+obs --> pl
+  pl --> exec
+
+  style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+  obs:::not
+  prop:::not
+  eval:::selected
+  select:::not
+  exec:::not
+```
+
+---
+
+##### Selection
+
+Through argmax, softmax or MVR, an action is selected or rejects all the prosed ones
+
+```mermaid
+graph TB
+  classDef selected fill:#ffb882,stroke:#000
+  classDef not fill:#eee,stroke:#000
+
+  obs@{ shape: stadium, label: "Observation"}
+
+  subgraph pl["Planning"]
+    direction TB
+    prop["Propose"]
+    eval["Evaluate"]
+    select["Selection"]
+
+    prop --> eval
+    eval --> select
+    select --> prop
+  end
+
+  exec["Execution"]
+
+  obs --> pl
+  pl --> exec
+
+  style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+  obs:::not
+  prop:::not
+  eval:::not
+  select:::selected
+  exec:::not
+```
+
+--- 
+##### Execution
+
+Selected action is applied executing relevant procedure from agent’s source code, leading to an external grounding action or an internal learning action.
+
+```mermaid
+graph TB
+  classDef selected fill:#ffb882,stroke:#000
+  classDef not fill:#eee,stroke:#000
+
+  obs@{ shape: stadium, label: "Observation"}
+
+  subgraph pl["Planning"]
+    direction TB
+    prop["Propose"]
+    eval["Evaluate"]
+    select["Selection"]
+
+    prop --> eval
+    eval --> select
+    select --> prop
+  end
+
+  exec["Execution"]
+
+  obs --> pl
+  pl --> exec
+
+  style pl fill:#efe,stroke:#000,stroke-width:2px,color:#00a
+  obs:::not
+  prop:::not
+  eval:::not
+  select:::not
+  exec:::selected
+```
+
+{{% /section %}}
+
+--- 
+
+## Insights

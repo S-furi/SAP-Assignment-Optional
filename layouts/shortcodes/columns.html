@@ -1,0 +1,13 @@
+{{- $size := default "regular" (.Get "size" | lower) }}
+{{- if not (in (slice "regular" "large" "small") $size) }}
+  {{- $size = "regular" }}
+{{- end }}
+
+<div class="columns columns--{{ $size }}" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  {{- $content := split .Inner "<--->" }}
+  {{- range $content }}
+    <div class="column" style="flex: 1; min-width: 250px;">
+      {{ . | $.Page.RenderString }}
+    </div>
+  {{- end }}
+</div>
