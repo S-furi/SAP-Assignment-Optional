@@ -25,5 +25,5 @@ transition_speed = "fast"
 highlight_theme = "zenburn"
 history = true
 slide_number = true
-# width = '1920'
-# height = '1080'
+width = '1352'
+height = '878'
