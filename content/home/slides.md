@@ -3,52 +3,6 @@ title = "Cognitive Architectures for Language Agents"
 outputs = ["Reveal"]
 +++
 
-Contents:
-- [Background](#background)
-  - [Agents in Symbolic AI](#agents-in-symbolic-ai)
-    - [Agents as String Manipulation Systems](#agents-as-string-manipulation-systems)
-  - [Cognitive Agents](#cognitive-agents)
-  - [Production Systems and Human Cognition](#production-systems-and-human-cognition)
-    - [An Example: SOAR Architecture](#an-example-soar-architecture)
-    - [*Memory*](#memory)
-    - [*Grounding*](#grounding)
-    - [*Decision Making*](#decision-making)
-    - [*Learning*](#learning)
-- [Language Models](#language-models)
-  - [Cognitive Architectures Limitations](#cognitive-architectures-limitations)
-  - [Language Models: Core](#language-models-core)
-  - [Towards Language Agents](#towards-language-agents)
-    - [Similarities with Production Systems](#similarities-with-production-systems)
-    - [From Prompt Engineering to Cognitive Language Agents](#from-prompt-engineering-to-cognitive-language-agents)
-- [Cognitive Architecture for Language Agents (`CoALA`)](#cognitive-architecture-for-language-agents-coala)
-  - [Usage of Cognitive Architectures on LLM agents](#usage-of-cognitive-architectures-on-llm-agents)
-  - [`CoALA`](#coala)
-  - [Architecture](#architecture)
-    - [Memory](#memory-1)
-      - [Working Memory](#working-memory)
-      - [Episodic Memory](#episodic-memory)
-      - [Semantic Memory](#semantic-memory)
-      - [Procedural Memory](#procedural-memory)
-    - [Grounding Actions](#grounding-actions)
-      - [Physical Environment](#physical-environment)
-      - [Dialogue with Humans or Other Agents](#dialogue-with-humans-or-other-agents)
-      - [Digital Environment](#digital-environment)
-    - [Retrieval Actions](#retrieval-actions)
-    - [Reasoning Actions](#reasoning-actions)
-    - [Learning](#learning-1)
-      - [Updating Episodic Memory](#updating-episodic-memory)
-      - [Updating Semantic Memory](#updating-semantic-memory)
-      - [Updating LLM Parameters (Procedural Memory)](#updating-llm-parameters-procedural-memory)
-      - [Updating Agent's Code (Procedural Memory)](#updating-agents-code-procedural-memory)
-    - [Decision Making](#decision-making-1)
-      - [Proposal](#proposal)
-      - [Evaluation](#evaluation)
-      - [Selection](#selection)
-      - [Execution](#execution)
-- [Insights](#insights)
-
----
-
 ## Background
 
 With the term **Language Agents**, we refer to an emerging class of AI systems that use Large
@@ -241,7 +195,7 @@ in an **action space** structured into *internal* and *external* parts.
 ---
 
 ### Architecture
-![The CoALA framework architecture](figures/coala-architecture.png)
+<img src="figures/coala-architecture.png" height="700">
 
 ---
 
@@ -557,3 +511,67 @@ graph TB
 --- 
 
 ## Insights
+
+---
+
+### Thinking Beyond Monoliths
+Agents should be **structured** and **modular**, providing advantages to:
+- Academic research
+- Industry applications
+- End users
+
+---
+
+### Thinking Beyond Simple Reasoning
+
+`CoALA` provides various means of developing an application-specific agent that goes beyond reasoning:
+- Which **memory modules** are necessary
+- What is the agent's **action space**
+- How is the **decision-making** procedure implemented
+
+---
+
+### Thinking Beyond Prompt Engineering
+
+`CoALA` suggest a more structured reasoning procedure to update working memory variables and provide higher quality behaviours.
+
+---
+
+### Thinking Beyond Retrieval Augmentation
+
+Agents can themselves learn how, when and which memory access for a given procedure, allowing also for **forward simulation** scenarios.
+
+---
+
+### Thinking beyond in-context learning or finetuning
+
+Accomplished by means of **meta-learning** or completely **new forms** of learning (e.g. fine-tuning smaller models for sub-tasks).
+
+---
+
+### Thinking Beyond Action Generation
+
+Towards more deliberate, propose-evaluate-select decision making procedures,
+possibly accomplished by mechanisms such as **mixing language-based**  reasoning
+and **code-based** planning.
+
+---
+
+## Final Considerations
+
+---
+
+### Calibration and Alignment
+More complex decision making is currently bottlenecked by issues such as:
+- *over-confidence*
+- *miscalibration*
+- *misalignment* (e.g. with respect to human values)
+- *hallucinations*
+
+--- 
+### How would agent design change with more powerful LLMs?
+
+If future LLMs will be capable of simulate memory, grounding, learning and
+decision-making in context, the importance of different CoALA components can be
+altered, however it can still help to organise tasks where language agents
+succeeds or fails.
